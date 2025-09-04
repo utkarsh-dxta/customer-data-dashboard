@@ -45,18 +45,18 @@ function displayUser(data) {
   const clv = (data.CLV || data.Customer_Lifetime_Value || '').toString().toLowerCase();
   const churn = data.Prop_churn != null ? Number(data.Prop_churn) : null;
   const discount = data.Discount != null ? Number(data.Discount) : null;
-  const daysSince = data.days_since_last_purchase != null ? Number(data.days_since_last_purchase) : null;
+  const daysSince = data.days_since_last_purchase;
   const totalPurchases = data.total_purchases != null ? Number(data.total_purchases) : null;
   const phone = data.current_phone || '';
   const signup = data.signup_date ? new Date(data.signup_date) : null;
 
   const clvClass = clv.includes('high') ? 'good' : clv.includes('low') ? 'bad' : 'neutral';
-  const churnClass = churn == null ? '' : churn > 0.5 ? 'bad' : churn < 0.25 ? 'good' : 'neutral';
+  const churnClass = churn == null ? 'bad' : churn > 0.5 ? 'bad' : churn < 0.25 ? 'good' : 'neutral';
 
   const signupStr = signup ? signup.toLocaleDateString() : '—';
   const churnPct = churn == null ? '—' : `${Math.round(churn * 100)}%`;
   const discountStr = discount == null ? '—' : `${discount}%`;
-  const daysStr = daysSince == null ? '—' : `${daysSince} day${daysSince === 1 ? '' : 's'}`;
+  const daysStr = daysSince == null || daysSince === '' ? '—' : daysSince;
   const purchasesStr = totalPurchases == null ? '—' : `${totalPurchases}`;
 
   const html = `
@@ -69,28 +69,28 @@ function displayUser(data) {
     </div>
     <div class="grid">
       <div class="stat">
-        <div class="label">CLV</div>
+        <div class="label">Customer Lifetime Value</div>
         <div class="value ${clvClass}">${(data.CLV || '—')}</div>
       </div>
-      <div class="stat">
-        <div class="label">Churn Probability</div>
-        <div class="value ${churnClass}">${churnPct}</div>
+            <div class="stat">
+        <div class="label">Current Phone</div>
+        <div class="value">${phone || '—'}</div>
       </div>
       <div class="stat">
         <div class="label">Discount</div>
         <div class="value">${discountStr}</div>
       </div>
       <div class="stat">
-        <div class="label">Days Since Last Purchase</div>
-        <div class="value">${daysStr}</div>
-      </div>
-      <div class="stat">
         <div class="label">Total Purchases</div>
         <div class="value">${purchasesStr}</div>
       </div>
+            <div class="stat">
+        <div class="label">Current Plan Name</div>
+        <div class="value">${daysStr}</div>
+      </div>
       <div class="stat">
-        <div class="label">Current Phone</div>
-        <div class="value">${phone || '—'}</div>
+        <div class="label">Churn Probability</div>
+        <div class="value ${churnClass}">${churnPct}</div>
       </div>
       <div class="section">
         <h3>Profile</h3>
