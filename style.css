@@ -1,7 +1,7 @@
 body { font-family: Arial, sans-serif; padding: 24px; background: #afbddb; color: #e2e8f0; }
 .container { max-width: 1100px; margin: 0 auto; }
 .app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0px; gap: 12px; }
-.logo { width: 130px; height: 130px; object-fit: contain; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45)); }
+.logo { width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45)); }
 .app-header h1 { margin: 0; font-size: 45px; letter-spacing: 0.6px; color: #1e3a8a; text-shadow: 0 2px 10px rgba(0,0,0,0.35); }
 .controls { background: #0b1220; border: 1px solid #1f2a44; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.35) inset, 0 10px 30px rgba(3,7,18,0.35); }
 .input-group { display: flex; gap: 10px; }
