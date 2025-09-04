@@ -73,7 +73,7 @@ function displayUser(data) {
         <div class="value ${clvClass}">${(data.CLV || '—')}</div>
       </div>
       <div class="stat">
-        <div class="label">Prop. Churn</div>
+        <div class="label">Churn Probability</div>
         <div class="value ${churnClass}">${churnPct}</div>
       </div>
       <div class="stat">
